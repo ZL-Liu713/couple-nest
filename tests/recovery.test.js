@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFileSync} from 'node:fs';
 import * as model from '../src/model.js';
+import * as games from '../src/games.js';
 const source=readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
 function harness(getNest){
- const context={...model,e:model.escapeHTML,configured:false,client:{removeChannel:async()=>{},auth:{}},getNest,URL,URLSearchParams,location:{hash:'',pathname:'/'},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},document:{querySelector:()=>null,querySelectorAll:()=>[],getElementById:()=>null,addEventListener(){}},window:{addEventListener(){}},setTimeout,console};
+ const context={...model,...games,e:model.escapeHTML,configured:false,client:{removeChannel:async()=>{},auth:{}},getNest,URL,URLSearchParams,location:{hash:'',pathname:'/'},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},document:{querySelector:()=>null,querySelectorAll:()=>[],getElementById:()=>null,addEventListener(){}},window:{addEventListener(){}},setTimeout,console};
  const code=source.replace(/^import .*;\n/gm,'').split("invite=readInvite(new URLSearchParams(location.hash.slice(1)).get('invite'));" )[0];
  vm.runInNewContext(code+`\nlet renders=0;render=()=>renders++;toast=()=>{};updateStatus=()=>{};globalThis.testApi={refresh,mutate,clearSession,setup(){user={id:'u'};demo=false;phase='ready';nest={...newDemo(),notes:[]};},state:()=>({user,demo,nest,renders,generation}),};`,context);
  return context.testApi;
