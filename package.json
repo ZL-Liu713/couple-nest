@@ -1,0 +1,1 @@
+{"name":"couple-nest","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"vite --host 127.0.0.1","build":"vite build","preview":"vite preview --host 127.0.0.1","test":"node --test tests/*.test.js"},"dependencies":{"@supabase/ssr":"^0.12.6","@supabase/supabase-js":"^2.115.0"},"devDependencies":{"@electric-sql/pglite":"^0.3.10","vite":"^7.1.0"}}
