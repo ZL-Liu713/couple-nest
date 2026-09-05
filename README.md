@@ -86,3 +86,13 @@ npm run build
 - GitHub Pages：https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
 - Supabase 实时数据库：https://supabase.com/docs/guides/realtime/postgres-changes
 - Supabase 邮件服务：https://supabase.com/docs/guides/auth/auth-smtp
+
+## v2 升级（已有项目）
+
+在 Supabase SQL Editor 运行 `supabase/upgrade-v2.sql` 后部署新版。**已有项目不要重跑 schema.sql**。全新项目先运行 schema.sql，再运行 upgrade-v2.sql。
+
+新增可选性别、8 种头像、私密回忆相册（5 MB 内 JPG/PNG/WebP，拍立得 / 画廊 / 大图）、明确的退出账号和退出小窝入口。
+
+退出小窝会保留历史但归档原房间，离开的成员不再有访问权限，剩余成员可读历史但不能继续邀请或写入。这样不会把旧内容展示给下一位伴侣。
+
+测试与尚未完成事项请阅读 `docs/测试与修改报告.md`。
